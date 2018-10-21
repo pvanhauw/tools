@@ -1,0 +1,142 @@
+# Most of this commands are copy paste from the internet that have been tweaked for personnal use 
+
+# personnal alias
+#-------------------------------------------------------------
+# The 'ls' family (this assumes you use a recent GNU ls)
+#-------------------------------------------------------------
+#alias ll="ls -l --group-directories-first"
+#alias ls='ls -hF --color'  # add colors for filetype recognition
+#alias la='ls -Al'          # show hidden files
+#alias lx='ls -lXB'         # sort by extension
+#alias lk='ls -lSr'         # sort by size, biggest last
+#alias lc='ls -ltcr'        # sort by and show change time, most recent last
+#alias lu='ls -ltur'        # sort by and show access time, most recent last
+#alias lt='ls -ltr'         # sort by date, most recent last
+#alias lm='ls -al |more'    # pipe through 'more'
+#alias lr='ls -lR'          # recursive ls
+alias tree='tree -Csu'     # nice alternative to 'recursive ls'
+
+# If your version of 'ls' doesn't support --group-directories-first try this:
+# function ll(){ ls -l "$@"| egrep "^d" ; ls -lXB "$@" 2>&-| \
+#                egrep -v "^d|total "; }
+
+#-------------------------------------------------------------
+# spelling typos - highly personnal and keyboard-dependent :-)
+#-------------------------------------------------------------
+alias VIM='vim'
+alias vom='vim'
+alias vil='vim'
+alias vi='vim'
+alias v='vim'
+alias bim='vim'
+alias viù='vim'
+alias vimù='vim'
+alias biù='vim'
+
+alias l='ll'
+
+alias xs='cd'
+alias vf='cd'
+alias d='cd'
+
+alias moer='more'
+alias moez='more'
+alias m='more'
+
+#alias hp='awk '$3 ~ /install|remove/ {print $1 " "$3 ": "$4}' /var/log/dpkg.log.1'
+
+#-------------------------------------------------------------
+# Make the following commands run in background automatically:
+#-------------------------------------------------------------
+function evince() { command evince "$@" & }
+
+#-------------------------------------------------------------
+# File & string-related functions:
+#-------------------------------------------------------------
+function extract()      # Handy Extract Program.
+{
+     if [ -f $1 ] ; then
+         case $1 in
+             *.tar.bz2)   tar xvjf $1     ;;
+             *.tar.gz)    tar xvzf $1     ;;
+             *.bz2)       bunzip2 $1      ;;
+             *.rar)       unrar x $1      ;;
+             *.gz)        gunzip $1       ;;
+             *.tar)       tar xvf $1      ;;
+             *.tbz2)      tar xvjf $1     ;;
+             *.tgz)       tar xvzf $1     ;;
+             *.zip)       unzip $1        ;;
+             *.Z)         uncompress $1   ;;
+             *.7z)        7z x $1         ;;
+             *)           echo "'$1' cannot be extracted via >extract<" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
+function c()
+{
+  cd $1;
+  ll 
+}
+
+# secure alias 
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# hugly other alias 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+alias ........='cd ../../../../../../..'
+alias .........='cd ../../../../../../../..'
+alias ..........='cd ../../../../../../../../..'
+alias ...........='cd ../../../../../../../../../..'
+
+# User specific aliases and functions
+alias lr='ls -lrt'         # sort by date, most recent last
+alias lS='ls -lrtS'        # sort by Size 
+alias ls='ls --color=force -h'
+alias ll='ls -l --color=force'
+alias la='ls -a --color=force'
+alias lg='ls -a | grep'
+alias lm='lr *.fra *.sch  *.par *.clu *tmp.conn' 
+alias lc='lr *.mcr *.plt *wall.dat *lpk *.tec' 
+alias li='lr *.jpg *.png' 
+#alias l.='ls -d .[a-zA-Z]* --color=force'
+alias psm='ps aux | m'
+alias psa='ps -a'
+alias help='man -k'
+alias diff='colordiff'
+#alias path 'echo $path'
+alias h='history'
+alias hg='h | grep'
+alias grep='grep --color -n'
+alias pg='ps -A  | grep'
+
+#function/script alias:
+alias conv='python /home/pierre/Tools/TSCH/chconv.py '
+alias Qconv='python /home/pierre/Tools/TSCH/Qchconv.py '
+alias x='python3 ~/tools/src/python/launchCommands.py' 
+alias monitor='python3 ~/tools/src/python/cpu.py'
+alias fix='~/tools/src/bash/HowTo/Keyboard/repetitionAuto.tsh'
+alias qchk64='~/Softwares/GridProVersionX/GridPro_v5.1_linux64bit/bin/qchk'
+
+# temporary alias: 
+alias ap='cd ~/RTechDev/apps'
+alias tec='~/Softwares/Tecplot360-2013-R1/bin/tec360'
+#alias opf1.7='source $HOME/OpenFOAM/OpenFOAM-1.7.1/etc/cshrc'
+#alias opf1.6='source $HOME/OpenFOAM/OpenFOAM-1.6/etc/cshrc'
+#alias gridpro2FOAM='/home/pierre/Software/GridPro2FOAM/gridpro2FOAM'
+#setenv WM_COLOURS "black blue green cyan red magenta yellow"
+
+#rename alias
+#alias c '/home/pierre/Tools/TSCH/cdls.tsh'
+#alias df 'df -h'
+
+#alias sshx='ssh -c arcfour,blowfish-cbc -XC'
