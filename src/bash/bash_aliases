@@ -1,4 +1,4 @@
-# Most of this commands are copy paste from the internet that have been tweaked for personnal use 
+# Most of this commands are copy paste from the internet and some of them have been tweaked for personnal use 
 
 # personnal alias
 #-------------------------------------------------------------
@@ -49,6 +49,7 @@ alias m='more'
 # Make the following commands run in background automatically:
 #-------------------------------------------------------------
 function evince() { command evince "$@" & }
+function libreoffice() { command libreoffice "$@" & }
 
 #-------------------------------------------------------------
 # File & string-related functions:

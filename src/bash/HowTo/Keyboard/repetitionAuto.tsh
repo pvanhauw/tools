@@ -1,2 +1,3 @@
 #!/bin/tcsh
+# command to fix automatic repetition to be disable (randomly ?)
 xset r on
