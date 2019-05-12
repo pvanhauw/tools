@@ -38,6 +38,7 @@ alias l='ll'
 alias xs='cd'
 alias vf='cd'
 alias d='cd'
+alias d='dc'
 
 alias moer='more'
 alias moez='more'
@@ -121,8 +122,8 @@ alias grep='grep --color -n'
 alias pg='ps -A  | grep'
 
 #function/script alias:
-alias conv='python /home/pierre/Tools/TSCH/chconv.py '
-alias Qconv='python /home/pierre/Tools/TSCH/Qchconv.py '
+alias conv='python ~/Tools/TSCH/chconv.py '
+alias Qconv='python ~/Tools/TSCH/Qchconv.py '
 alias x='python3 ~/tools/src/python/launchCommands.py' 
 alias monitor='python3 ~/tools/src/python/cpu.py'
 alias fix='~/tools/src/bash/HowTo/Keyboard/repetitionAuto.tsh'
@@ -133,11 +134,11 @@ alias ap='cd ~/RTechDev/apps'
 alias tec='~/Softwares/Tecplot360-2013-R1/bin/tec360'
 #alias opf1.7='source $HOME/OpenFOAM/OpenFOAM-1.7.1/etc/cshrc'
 #alias opf1.6='source $HOME/OpenFOAM/OpenFOAM-1.6/etc/cshrc'
-#alias gridpro2FOAM='/home/pierre/Software/GridPro2FOAM/gridpro2FOAM'
+#alias gridpro2FOAM='~/Software/GridPro2FOAM/gridpro2FOAM'
 #setenv WM_COLOURS "black blue green cyan red magenta yellow"
 
 #rename alias
-#alias c '/home/pierre/Tools/TSCH/cdls.tsh'
+#alias c '~/Tools/TSCH/cdls.tsh'
 #alias df 'df -h'
 
 #alias sshx='ssh -c arcfour,blowfish-cbc -XC'

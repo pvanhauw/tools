@@ -73,7 +73,7 @@ def defineLaunchers() :
         pdf 	 = ['pdf','ps','gs','PDF'] 
         oo 	 = ['odt','xls','ppt','doc','ods','docx','csv','xlsx','odp','pptx']
         pic 	 = ['png','gif','jpg','bmp','ppm','pgm']
-        cfdDB 	 = ['pvd','vtu','tec','vtk','vtp']
+        cfdDB 	 = ['pvd','vtu','tec','vtk','vtp','pvsm']
         py 	= ['py']
         tecplot = ['lpk','plt','lay']
         vidList = ['mp4','mkv',"avi","mpg","flv","m2t"]
@@ -83,6 +83,7 @@ def defineLaunchers() :
         yEdList = ['graphml']
         pdflatexList = ['tex']
         htmlList = ['html']
+        geomviewList = ["off"]
         # associiate extension with command and argument if any 
         launchers = [] 
         launchers.append( Launcher( 'ws' 		, Gridlist    ) )
@@ -91,7 +92,7 @@ def defineLaunchers() :
         launchers.append( Launcher( 'evince' 	, pdf    ) )
         launchers.append( Launcher( 'libreoffice' 	, oo    ) )
         launchers.append( Launcher( 'ristretto' 	, pic    ) )
-        launchers.append( Launcher( 'python3' 	, py    ) )
+        launchers.append( Launcher( 'python3.6' 	, py    ) )
         launchers.append( Launcher( 'paraview' 	, cfdDB    ) )
         launchers.append( Launcher( 'tec'	 	, tecplot    ) )
         launchers.append( Launcher( 'vlc'		, vidList ) ) 
@@ -102,6 +103,7 @@ def defineLaunchers() :
         launchers.append( Launcher( 'yEd'		, yEdList ) ) 
         launchers.append( Launcher( 'pdflatex'	, pdflatexList ) ) 
         launchers.append( Launcher( 'chromium-browser'	, htmlList ) ) 
+        launchers.append( Launcher( 'geomview'	, geomviewList ) ) 
         return launchers 
 
 def main () : 
