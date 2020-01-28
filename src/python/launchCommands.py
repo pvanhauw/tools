@@ -1,13 +1,13 @@
 '''
  use default command depending on extentions 
 '''
-from subprocess import *
 import sys
 import os 
 import time
 import subprocess
 import argparse
 import pandas as pd 
+import shlex
 
 class bcolors:
         HEADER = '\033[95m'
@@ -24,17 +24,28 @@ class bcolors:
                 self.FAIL = ''
                 self.ENDC = ''
 
+"""
+https://stackoverflow.com/questions/35817/how-to-escape-os-system-calls
+"""
+def shellquote(s):
+    return "'" + s.replace("'", "'\\''") + "'"
+
+"""
+Launcher run using Popen : [self.binary , self.pre_argument ] + argument_list + [ self.post_argument ]
+"""
 class Launcher() : 
+
     def __init__(self, binary, suffixes, pre_argument= '', post_argument = '' ):
         self.binary		= binary
         self.suffixes 	= suffixes 
         self.pre_argument 	= pre_argument 
         self.post_argument 	= post_argument 
 
-    def run(self , argument) :
-        commandToDo = '%s %s %s %s'%(self.binary , self.pre_argument, argument, self.post_argument ) 
-        print(bcolors.WARNING+"---> RUN : "+bcolors.FAIL+commandToDo+bcolors.END)
-        os.system(commandToDo)
+    def runOpen(self , argument_list) :
+        aList = [self.binary , self.pre_argument ] + argument_list + [ self.post_argument ] 
+        stream = " ".join(x for x in aList ) 
+        print(bcolors.WARNING+"---> RUN : " + bcolors.FAIL + stream  + bcolors.END)
+        p1 = subprocess.Popen(aList) 
 
 """
 split path into 2 string: first one behind identical to path without the 'extension',
@@ -46,7 +57,7 @@ def getPathAndExtension(path ):
     return filename ,  file_extension
 
 """
-return list of 'Launcher'
+return list of customized 'Launcher'
 """
 def defineLaunchers() : 
     # associiate extension with command and argument if any 
@@ -67,7 +78,7 @@ def defineLaunchers() :
         Launcher('xfig'    , ['fig'] ),
         Launcher('gnuplot' , ['gnu'] ), # this is not rekonize extension at all ! 
         Launcher('yEd'     , ['graphml'] ),
-        Launcher('pdflatex', ['tex'] ),
+        Launcher('pdflatex', ['tex', 'mp4'] ),
         Launcher('chromium-browser', ["html"]) ,
         Launcher('geomview', ['off'] ) 
     ]
@@ -79,7 +90,7 @@ def getBinaryFromExtension(launchers ):
     for launcher in launchers :
         for extension in launcher.suffixes: 
             binary_from_extension[extension] = launcher.binary
-    # check unicity : ...
+    # check unicity : ...TODO
     return binary_from_extension
 
 def getLauncherFromBinary(launchers ):
@@ -87,13 +98,13 @@ def getLauncherFromBinary(launchers ):
     launcher_from_binary = {}
     for launcher in launchers :
         launcher_from_binary[launcher.binary] = launcher
-    # check unicity : ...
+    # check unicity : ...TODO 
     return launcher_from_binary
 
 '''
-check if all file have provided as argument have the same extension 
+check if all file provided as arguments of the script have the same extension 
     if yes:    launch them all with the same command. We assume the command is compatible.  
-    else :     launch them with different commands sequentially. We do want to group file that can launched with the same commande together 
+    else :     launch them with different commands sequentially. We do want to group file that can launched with the same command together 
 '''
 def main () : 
     NoA=len(sys.argv)
@@ -119,11 +130,8 @@ def main () :
     print( df)
     groups = df.groupby("binary")
     for binary, dfc in groups :
-        print( df)
-        filenames_concatenated = ''
-        for arg in dfc.inputfile : 
-            filenames_concatenated += ' %s'%arg
         launcher = launcher_from_binary[binary]
-        launcher.run( filenames_concatenated )
+        print( df)
+        launcher.runOpen(dfc.inputfile.to_list()) 
         
 main() 
