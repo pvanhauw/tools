@@ -65,7 +65,7 @@ def defineLaunchers() :
         Launcher('ws'  ,   ['conn', 'hex'] ),
         Launcher('ws'  ,   ["fra"] ),
         Launcher('az'  ,   ['tmp','tria','quad','brd','tube',
-            'stl','dat','hmtc','stl','astl'], pre_argument = '-S', post_argument = ''),
+            'dat','hmtc','stl','astl'], pre_argument = '-S', post_argument = ''),
         Launcher('evince' 	, ['pdf','ps','gs','PDF'] ) ,
         Launcher('libreoffice',
             ['odt','xls','ppt','doc','ods','docx','csv','xlsx','odp','pptx']),
@@ -78,7 +78,7 @@ def defineLaunchers() :
         Launcher('xfig'    , ['fig'] ),
         Launcher('gnuplot' , ['gnu'] ), # this is not rekonize extension at all ! 
         Launcher('yEd'     , ['graphml'] ),
-        Launcher('pdflatex', ['tex', 'mp4'] ),
+        Launcher('pdflatex', ['tex'] ),
         Launcher('chromium-browser', ["html"]) ,
         Launcher('geomview', ['off'] ) 
     ]
@@ -89,7 +89,10 @@ def getBinaryFromExtension(launchers ):
     binary_from_extension = {}
     for launcher in launchers :
         for extension in launcher.suffixes: 
-            binary_from_extension[extension] = launcher.binary
+            if not extension in binary_from_extension.keys() :
+                binary_from_extension[extension] = launcher.binary
+            else : 
+                raise KeyError ("mulitple extension for %s"%extension) 
     # check unicity : ...TODO
     return binary_from_extension
 
@@ -98,7 +101,6 @@ def getLauncherFromBinary(launchers ):
     launcher_from_binary = {}
     for launcher in launchers :
         launcher_from_binary[launcher.binary] = launcher
-    # check unicity : ...TODO 
     return launcher_from_binary
 
 '''
