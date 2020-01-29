@@ -41,6 +41,11 @@ class Launcher() :
         self.pre_argument 	= pre_argument 
         self.post_argument 	= post_argument 
 
+    def run(self , argument) :
+        commandToDo = '%s %s %s %s'%(self.binary , self.pre_argument, argument, self.post_argument ) 
+        print(bcolors.WARNING+"---> RUN : "+bcolors.FAIL+commandToDo+bcolors.END)
+        os.system(commandToDo)
+
     def runOpen(self , argument_list) :
         aList = [self.binary , self.pre_argument ] + argument_list + [ self.post_argument ] 
         stream = " ".join(x for x in aList ) 
@@ -132,8 +137,12 @@ def main () :
     print( df)
     groups = df.groupby("binary")
     for binary, dfc in groups :
-        launcher = launcher_from_binary[binary]
         print( df)
-        launcher.runOpen(dfc.inputfile.to_list()) 
+        filenames_concatenated = ''
+        for arg in dfc.inputfile : 
+            filenames_concatenated += ' %s'%arg
+        launcher = launcher_from_binary[binary]
+        launcher.run( filenames_concatenated )
+        #launcher.runOpen(dfc.inputfile.to_list()) 
         
 main() 
