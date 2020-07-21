@@ -1,0 +1,52 @@
+name: std
+channels:
+  - defaults
+  - pyviz
+  - cantera
+dependencies:
+  - python=3.7
+  - bokeh
+  - cantera
+  - configargparse
+  - curl
+  - dask
+  - datashader
+  - docutils
+  - flake8
+  - ffmpeg
+  - future
+  - jupyter
+  - lxml
+  - markdown
+  - matplotlib
+  - numpy
+  - openpyxl
+  - panel
+  - pandas
+  - pillow
+  - plotly
+  - progress
+  - psutil
+  - scipy
+  - scikit-learn
+  - sphinx
+  - sqlite
+  - tabulate
+  - vtk
+  - wheel
+  - xarray
+  - xlrd
+  - xlsxwriter
+  - xlutils
+  - xlwt
+  - yaml
+  - pip 
+  - pip :
+    - adjustText 
+    - ffmpeg-python
+    - gif
+    - prospector
+    - pyvista
+    - pyevtk
+    - triangle
+    - wget 
