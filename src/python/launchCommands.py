@@ -77,7 +77,7 @@ def defineLaunchers() :
         #Launcher('sxiv', ['png','gif','jpg','bmp','ppm','pgm'] ),
         Launcher('eog', ['png','gif','jpg','bmp','ppm','pgm'] ),
         Launcher('python'  , ['py']   ) ,
-        Launcher('paraview', ['pvd','vtu','tec','vtk','vtp','pvsm',"stl"] ) ,
+        Launcher('paraview', ['pvd','vtu','tec','vtk','vtp','pvsm',"stl","obj"] ) ,
         Launcher('tec'     , ['lpk','plt','lay']) ,
         Launcher('vlc'     , ['mp4','mkv',"avi","mpg","flv","m2t"] ), # ffplay ? 
         Launcher('gmsh'    , ['msh','geo'] ) ,

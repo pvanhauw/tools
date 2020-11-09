@@ -15,6 +15,7 @@ dependencies:
   - flake8
   - ffmpeg
   - future
+  - holoviews
   - jupyter
   - lxml
   - markdown
@@ -29,12 +30,15 @@ dependencies:
   - psutil
   - scipy
   - scikit-learn
+  - setuptools
   - sphinx
   - sqlite
   - tabulate
+  - tetgen
   - vtk
   - wheel
   - xarray
+  - xvfbwrapper
   - xlrd
   - xlsxwriter
   - xlutils
@@ -43,10 +47,16 @@ dependencies:
   - pip 
   - pip :
     - adjustText 
+    - bpytop
     - ffmpeg-python
     - gif
+    - openturns
     - prospector
     - pyvista
     - pyevtk
     - triangle
+    - py-gnuplot
+    - pysnooper
+    - python-docx==0.8.10
     - wget 
+# conda install -c conda-forge pyembree
