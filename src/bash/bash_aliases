@@ -105,7 +105,7 @@ alias lr='ls -lrt'         # sort by date, most recent last
 alias lS='ls -lrtS'        # sort by Size 
 alias ls='ls --color=force -h'
 alias ll='ls -l --color=force'
-alias la='ls -a --color=force'
+alias la='ls -Sla --color=force'
 alias lg='ls -a | grep'
 alias lm='lr *.fra *.sch  *.par *.clu *tmp.conn' 
 alias lc='lr *.mcr *.plt *wall.dat *lpk *.tec' 
@@ -132,6 +132,7 @@ alias qchk64='~/Softwares/GridProVersionX/GridPro_v5.1_linux64bit/bin/qchk'
 # temporary alias: 
 alias ap='cd ~/RTechDev/apps'
 alias tec='~/Softwares/Tecplot360-2013-R1/bin/tec360'
+alias bam='python /home/pierre/tools/src/python/oneCommand.py'
 #alias opf1.7='source $HOME/OpenFOAM/OpenFOAM-1.7.1/etc/cshrc'
 #alias opf1.6='source $HOME/OpenFOAM/OpenFOAM-1.6/etc/cshrc'
 #alias gridpro2FOAM='~/Software/GridPro2FOAM/gridpro2FOAM'

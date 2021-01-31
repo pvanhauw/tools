@@ -1,13 +1,9 @@
-'''
- use default command depending on extentions 
-'''
 import sys
 import os
 import time
 import subprocess
-import argparse
-import pandas as pd
-import shlex
+# import bcolors
+from datetime import date
 
 
 class bcolors:
@@ -25,20 +21,6 @@ class bcolors:
         self.WARNING = ''
         self.FAIL = ''
         self.ENDC = ''
-
-
-"""
-https://stackoverflow.com/questions/35817/how-to-escape-os-system-calls
-"""
-
-
-def shellquote(s):
-    return "'" + s.replace("'", "'\\''") + "'"
-
-
-"""
-Launcher run using Popen : [self.binary , self.pre_argument ] + argument_list + [ self.post_argument ]
-"""
 
 
 class Launcher:
@@ -131,7 +113,36 @@ check if all file provided as arguments of the script have the same extension
 '''
 
 
+def getDirnameToday(cwd, index=0):
+    today = date.today()
+    # base = today.strftime("%d_%m_%Y")
+    base = today.strftime("%Y_%m_%d")
+    dirname = os.path.join(cwd, f"{base}_{index}")
+    while os.path.exists(dirname):
+        index += 1
+        dirname = os.path.join(cwd, f"{base}_{index}")
+        if index > 100:
+            raise Exception(f"Could not create a directory even {dirname}")
+    return dirname
+
+
 def main():
+    cwd = os.getcwd()
+    dirname = getDirnameToday(cwd)
+    os.makedirs(dirname)
+    os.chdir(dirname)
+    os.system(f"cd {dirname}")
+    cmd2 = f"cd {dirname}"
+    cmd = 'scp tit:/home/pierre/XFER . ; tar -zxvf XFER'
+    os.system(cmd)
+    print(cmd2)
+    os.system('bash')
+    # look up for the majority of file extension in the dir
+
+    # open all of them if proportion larger than prop
+
+
+    '''
     NoA = len(sys.argv)
     if not NoA > 1:
         print("no argument passed")
@@ -162,6 +173,7 @@ def main():
         launcher = launcher_from_binary[binary]
         launcher.run(filenames_concatenated)
         # launcher.runOpen(dfc.inputfile.to_list())
+    '''
 
 
 main()
