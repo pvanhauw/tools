@@ -69,8 +69,9 @@ def defineLaunchers() :
     launchers = [ 
         Launcher('ws'  ,   ['conn', 'hex'] ),
         Launcher('ws'  ,   ["fra"] ),
-        Launcher('az'  ,   ['tmp','tria','quad','brd','tube',
-            'dat','hmtc','astl'], pre_argument = '-S', post_argument = ''),
+        Launcher('ws'  ,   ['tmp','tria','quad','brd','tube',
+            'dat','hmtc','astl'], pre_argument = '', post_argument = ''),
+            #'dat','hmtc','astl'], pre_argument = '-S', post_argument = ''),
         Launcher('evince' 	, ['pdf','ps','gs','PDF'] ) ,
         Launcher('libreoffice',
             ['odt','xls','ppt','doc','ods','docx','csv','xlsx','odp','pptx']),

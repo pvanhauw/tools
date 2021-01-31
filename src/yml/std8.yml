@@ -1,12 +1,13 @@
-name: std
+name: std8
 channels:
   - defaults
   - pyviz
   - cantera
 dependencies:
-  - python=3.7
+  - python=3.8
   - bokeh
   - cantera
+  - coloredlogs
   - configargparse
   - curl
   - dask
@@ -16,6 +17,7 @@ dependencies:
   - ffmpeg
   - future
   - holoviews
+  - jedi
   - jupyter
   - lxml
   - markdown
