@@ -8,6 +8,7 @@ dependencies:
   - bokeh
   - cantera
   - configargparse
+  - coloredlogs
   - curl
   - dask
   - datashader
@@ -29,17 +30,17 @@ dependencies:
   - plotly
   - progress
   - psutil
+  - pyarrow
   - scipy
   - scikit-learn
   - setuptools
   - sphinx
+  - sphinx_rtd_theme
   - sqlite
+  - statsmodels
   - tabulate
-  - tetgen
-  - vtk
   - wheel
   - xarray
-  - xvfbwrapper
   - xlrd
   - xlsxwriter
   - xlutils
@@ -47,6 +48,7 @@ dependencies:
   - yaml
   - pip 
   - pip :
+    - vtk>=9.0.1
     - adjustText 
     - bpytop
     - ffmpeg-python
@@ -54,10 +56,17 @@ dependencies:
     - openturns
     - prospector
     - pyvista
-    - pyevtk
-    - triangle
     - py-gnuplot
     - pysnooper
     - python-docx==0.8.10
+    - pyvistaqt
+    - sphinx-autobuild
+    - sphinx-gallery
+    - umap-learn
+    - tetgen
+    - triangle
     - wget 
+    - xvfbwrapper
+
+
 # conda install -c conda-forge pyembree

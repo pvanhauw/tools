@@ -126,6 +126,24 @@ def getDirnameToday(cwd, index=0):
     return dirname
 
 
+def main2():
+    pwd = sys.argv[1]
+    cwd = os.getcwd()
+    dirname = getDirnameToday(cwd)
+    os.makedirs(dirname)
+    os.chdir(dirname)
+    os.system(f"cd {dirname}")
+    cmd2 = f"cd {dirname}"
+    cmd = 'scp tit:/home/pierre/XFER . ; tar -zxvf XFER'
+    cmd = f'~/exp/tit.scp.expect {pwd} ; tar -zxvf XFER'
+    os.system(cmd)
+    print(cmd2)
+    os.system('bash')
+    # look up for the majority of file extension in the dir
+
+    # open all of them if proportion larger than prop
+
+
 def main():
     cwd = os.getcwd()
     dirname = getDirnameToday(cwd)
@@ -176,4 +194,4 @@ def main():
     '''
 
 
-main()
+main2()
